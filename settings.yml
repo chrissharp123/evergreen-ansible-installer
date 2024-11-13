@@ -91,7 +91,7 @@ use_service_reporter: false
 start_services: true
 
 # Database Settings --------------------------------------------------------
-remove_database: true
+drop_database: true
 install_database: true
 
 database_host: 127.0.0.1
