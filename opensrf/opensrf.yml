@@ -38,11 +38,12 @@
   shell: cd {{repo_base}}/OpenSRF && make install
 - name: Setup redis-accounts config file
   become: true
-  copy:
-    remote_src: true
-    src: "{{eg_install_path}}/conf/redis-accounts.txt.example"
+  ansible.builtin.template:
+    src: "evergreen/templates/redis-accounts.txt.j2"
     dest: "{{eg_install_path}}/conf/redis-accounts.txt"
-    force: no
+    owner: opensrf
+    group: opensrf
+    backup: true
 - name: Set ownership of {{eg_install_path}} to opensrf
   become: true
   file: dest="{{eg_install_path}}" owner=opensrf group=opensrf recurse=yes
