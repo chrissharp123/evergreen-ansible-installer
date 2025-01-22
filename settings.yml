@@ -40,9 +40,9 @@ eg_admin_pass: demo123
 base_domain: localhost
 base_domain_addr: 127.0.0.1
 
-opensrf_redis_password: password
-router_redis_password: password
-gateway_redis_password: password
+opensrf_redis_password: "{{ lookup('ansible.builtin.password', '/dev/null') | to_uuid }}"
+router_redis_password: "{{ lookup('ansible.builtin.password', '/dev/null') | to_uuid }}"
+gateway_redis_password:  "{{ lookup('ansible.builtin.password', '/dev/null') | to_uuid }}"
 
 # Host domain used by web clients.
 # TODO add to apache eg.conf ServerName
