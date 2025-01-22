@@ -93,8 +93,13 @@ use_service_reporter: false
 start_services: true
 
 # Database Settings --------------------------------------------------------
+
+# set to false and change master/reports DB values if connecting
+# to an existing database
 install_database: true
 
+# these values are inserted into opensrf.xml via Jinja2 templating
+# (previously done by eg_db_config)
 master_database_host: 127.0.0.1
 master_database_port: 5432
 master_database_user: evergreen
@@ -106,7 +111,6 @@ reports_database_port: 5432
 reports_database_user: evergreen
 reports_database_password: evergreen
 reports_database_database: evergreen
-
 
 pg_install_target: postgres-server-ubuntu-jammy-14
 
