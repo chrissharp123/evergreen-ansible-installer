@@ -40,6 +40,10 @@ eg_admin_pass: demo123
 base_domain: localhost
 base_domain_addr: 127.0.0.1
 
+opensrf_redis_password: password
+router_redis_password: password
+gateway_redis_password: password
+
 # Host domain used by web clients.
 # TODO add to apache eg.conf ServerName
 web_domain: localhost
@@ -91,11 +95,18 @@ start_services: true
 # Database Settings --------------------------------------------------------
 install_database: true
 
-database_host: 127.0.0.1
-database_port: 5432
-database_user: evergreen
-database_password: evergreen
-database_database: evergreen
+master_database_host: 127.0.0.1
+master_database_port: 5432
+master_database_user: evergreen
+master_database_password: evergreen
+master_database_database: evergreen
+
+reports_database_host: 127.0.0.1
+reports_database_port: 5432
+reports_database_user: evergreen
+reports_database_password: evergreen
+reports_database_database: evergreen
+
 
 pg_install_target: postgres-server-ubuntu-jammy-14
 
