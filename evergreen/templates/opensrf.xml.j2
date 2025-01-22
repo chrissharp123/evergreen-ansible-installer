@@ -1268,11 +1268,11 @@ vim:et:ts=4:sw=4:
                     <database>
                         <type>master</type>
                         <weight>2</weight>
-                        <user>postgres</user>
-                        <host>localhost</host>
-                        <port>5432</port>
-                        <pw>postgres</pw>
-                        <db>evergreen</db>
+                        <user>{{ master_database_user }}</user>
+                        <host>{{ master_database_host }}</host>
+                        <port>{{ master_database_port }}</port>
+                        <pw>{{ master_database_password }}</pw>
+                        <db>{{ master_database_database }}</db>
                         <client_encoding>UTF-8</client_encoding>
                         <application_name>open-ils.reporter-store</application_name>
                     </database>
