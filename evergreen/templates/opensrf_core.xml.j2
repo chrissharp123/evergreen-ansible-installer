@@ -67,14 +67,12 @@ Example OpenSRF bootstrap configuration file for Evergreen
      -->
     <router_name>router</router_name>
 
-    <logfile>/openils/var/log/osrfsys.log</logfile>
-    <!--
+    <!-- <logfile>{{ eg_install_path }}/var/log/osrfsys.log</logfile> -->
       <logfile>syslog</logfile>
       <syslog>local0</syslog>
       <actlog>local1</actlog>
-     -->
     <loglevel>3</loglevel>
-    <settings_config>/openils/conf/opensrf.xml</settings_config>
+    <settings_config>{{ eg_install_path }}/conf/opensrf.xml</settings_config>
   </opensrf>
   <!-- 
     The section between <gateway>...</gateway> is a standard OpenSRF C
@@ -107,7 +105,7 @@ Example OpenSRF bootstrap configuration file for Evergreen
     <port>6379</port>
 
     <loglevel>3</loglevel>
-      <!-- <logfile>/openils/var/log/gateway.log</logfile> -->
+      <!-- <logfile>{{ eg_install_path }}/var/log/gateway.log</logfile> -->
       <logfile>syslog</logfile>
       <syslog>local6</syslog>
       <actlog>local1</actlog>
@@ -136,13 +134,13 @@ Example OpenSRF bootstrap configuration file for Evergreen
         <port>6379</port>
         <password>{{ router_redis_password }}</password>
 
-        <unixpath>/openils/var/sock/unix_sock</unixpath>
+        <unixpath>{{ eg_install_path }}/var/sock/unix_sock</unixpath>
         <username>router</username>
         <resource>router</resource>
         <connect_timeout>10</connect_timeout>
         <max_reconnect_attempts>5</max_reconnect_attempts>
       </transport>
-        <!-- <logfile>/openils/var/log/router-public.log</logfile> -->
+        <!-- <logfile>{{ eg_install_path }}/var/log/router-public.log</logfile> -->
         <logfile>syslog</logfile>
         <syslog>local2</syslog>
       <loglevel>2</loglevel>
@@ -165,7 +163,7 @@ Example OpenSRF bootstrap configuration file for Evergreen
         <connect_timeout>10</connect_timeout>
         <max_reconnect_attempts>5</max_reconnect_attempts>
       </transport>
-        <!-- <logfile>/openils/var/log/router-private.log</logfile> -->
+        <!-- <logfile>{{ eg_install_path }}/var/log/router-private.log</logfile> -->
         <logfile>syslog</logfile>
         <syslog>local2</syslog>
       <loglevel>2</loglevel>

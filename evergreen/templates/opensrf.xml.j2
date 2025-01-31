@@ -13,13 +13,13 @@ vim:et:ts=4:sw=4:
         <default_locale>en-US</default_locale>
 
         <dirs>
-            <log>/openils/var/log</log> <!-- unix::server log files -->
-            <sock>/openils/var/lock</sock> <!-- unix::server sock files -->
-            <pid>/openils/var/run</pid>
-            <xsl>/openils/var/xsl</xsl>
-            <script>/openils/var</script>
-            <script_lib>/openils/var</script_lib>
-            <templates>/openils/var/templates</templates>
+            <log>{{ eg_install_path }}/var/log</log> <!-- unix::server log files -->
+            <sock>{{ eg_install_path }}/var/lock</sock> <!-- unix::server sock files -->
+            <pid>{{ eg_install_path }}/var/run</pid>
+            <xsl>{{ eg_install_path }}/var/xsl</xsl>
+            <script>{{ eg_install_path }}/var</script>
+            <script_lib>{{ eg_install_path }}/var</script_lib>
+            <templates>{{ eg_install_path }}/var/templates</templates>
         </dirs>
 
         <!-- global data visibility settings -->
@@ -30,17 +30,17 @@ vim:et:ts=4:sw=4:
             </user>
         </share>
 
-        <IDL>/openils/conf/fm_IDL.xml</IDL> <!-- top level IDL file -->
+        <IDL>{{ eg_install_path }}/conf/fm_IDL.xml</IDL> <!-- top level IDL file -->
         <IDL2js>fm_IDL2js.xsl</IDL2js> <!-- IDL JS XSLT -->
 
 
         <server_type>prefork</server_type> <!-- net::server type -->
 
-        <ils_events>/openils/var/data/ils_events.xml</ils_events> <!-- ILS events description file -->
+        <ils_events>{{ eg_install_path }}/var/data/ils_events.xml</ils_events> <!-- ILS events description file -->
 
         <email_notify> <!-- this will eventually move into the notifications section below... -->
             <!-- global email notification settings -->
-            <template>/openils/var/data/hold_notification_template.example</template>
+            <template>{{ eg_install_path }}/var/data/hold_notification_template.example</template>
             <smtp_server>localhost</smtp_server>
 
             <!--
@@ -97,8 +97,8 @@ vim:et:ts=4:sw=4:
 
             <!-- The system can generate an XML file of overdue notices.  This is the
                 directory where they are stored.  Files are named overdue.YYYY-MM-DD.xml -->
-            <notice_dir>/openils/var/data/overdue</notice_dir>
-            <combined_template>/openils/var/data/templates/overdue_combined_xml.example</combined_template>
+            <notice_dir>{{ eg_install_path }}/var/data/overdue</notice_dir>
+            <combined_template>{{ eg_install_path }}/var/data/templates/overdue_combined_xml.example</combined_template>
 
             <notice>
                 <!-- Notify at 7 days overdue -->
@@ -109,7 +109,7 @@ vim:et:ts=4:sw=4:
                 <!-- do we attempt email notification? -->
                 <email_notify>false</email_notify>
                 <!-- notice template file -->
-                <email_template>/openils/var/data/templates/overdue_7day.example</email_template>
+                <email_template>{{ eg_install_path }}/var/data/templates/overdue_7day.example</email_template>
             </notice>
         </overdue>
 
@@ -125,7 +125,7 @@ vim:et:ts=4:sw=4:
                 <notify_interval>1 day</notify_interval>
                 <file_append>false</file_append>
                 <email_notify>false</email_notify>
-                <email_template>/openils/var/data/templates/predue_1day.example</email_template>
+                <email_template>{{ eg_install_path }}/var/data/templates/predue_1day.example</email_template>
             </notice>
         </predue>
       </notifications>
@@ -172,9 +172,9 @@ vim:et:ts=4:sw=4:
                 </state_store>
                 <files>
                     <!-- successful report outputs go here -->
-                    <output_base>/openils/var/web/reporter</output_base>
-                    <success_template>/openils/var/data/report-success</success_template>
-                    <fail_template>/openils/var/data/report-fail</fail_template>
+                    <output_base>{{ eg_install_path }}/var/web/reporter</output_base>
+                    <success_template>{{ eg_install_path }}/var/data/report-success</success_template>
+                    <fail_template>{{ eg_install_path }}/var/data/report-fail</fail_template>
                 </files>
                 <!-- Number of reports that can be processed simultaneously.  This
                      value can overriden by the -c/-concurrency command-line switch
@@ -362,7 +362,7 @@ vim:et:ts=4:sw=4:
             <!-- Root directory for all FTP'd ACQ order record files .
                  If the script is configured to talk to a remote acq server,
                  this directory has to be a read/write NFS share.  -->
-            <base_dir>/openils/var/data/acq_orders/</base_dir>
+            <base_dir>{{ eg_install_path }}/var/data/acq_orders/</base_dir>
 
             <!-- any files found in the shared subdir must be inspected
                  (e.g. file name prefix) to determine the provider. -->
@@ -641,11 +641,11 @@ vim:et:ts=4:sw=4:
                             If no dictionaries are defined, the default Aspell dictionary is used.
                         -->
                         <!--
-                        <default>/openils/var/data/default_dict.txt</default>
-                        <title>/openils/var/data/title_dict.txt</title>
-                        <author>/openils/var/data/author_dict.txt</author>
-                        <subject>/openils/var/data/subject_dict.txt</subject>
-                        <series>/openils/var/data/series_dict.txt</series>
+                        <default>{{ eg_install_path }}/var/data/default_dict.txt</default>
+                        <title>{{ eg_install_path }}/var/data/title_dict.txt</title>
+                        <author>{{ eg_install_path }}/var/data/author_dict.txt</author>
+                        <subject>{{ eg_install_path }}/var/data/subject_dict.txt</subject>
+                        <series>{{ eg_install_path }}/var/data/series_dict.txt</series>
                         -->
                     </spelling_dictionary>
 
@@ -734,7 +734,7 @@ vim:et:ts=4:sw=4:
                     <max_superpages>100</max_superpages>
 
                     <!-- zip code database file -->
-                    <!--<zips_file>/openils/var/data/zips.txt</zips_file>-->
+                    <!--<zips_file>{{ eg_install_path }}/var/data/zips.txt</zips_file>-->
                 </app_settings>
             </open-ils.search>
 
@@ -821,7 +821,7 @@ vim:et:ts=4:sw=4:
                 </unix_config>
                 <app_settings>
                     <marctemplates>
-                        <K_book>/openils/var/templates/marc/k_book.xml</K_book>
+                        <K_book>{{ eg_install_path }}/var/templates/marc/k_book.xml</K_book>
                     </marctemplates>
                 </app_settings>
             </open-ils.cat>
@@ -1080,7 +1080,7 @@ vim:et:ts=4:sw=4:
                 </unix_config>
                 <app_settings>
                     <script_path>LIBDIR/javascript/</script_path>
-                    <script_path>/openils/var/catalog/</script_path>
+                    <script_path>{{ eg_install_path }}/var/catalog/</script_path>
                     <scripts>
                         <biblio_fingerprint>biblio_fingerprint.js</biblio_fingerprint>
                     </scripts>
@@ -1149,7 +1149,7 @@ vim:et:ts=4:sw=4:
                 </unix_config>
 
                 <app_settings>
-                    <IDL>/openils/conf/fm_IDL.xml</IDL>
+                    <IDL>{{ eg_install_path }}/conf/fm_IDL.xml</IDL>
                     <driver>pgsql</driver>
                     <database>
                         <type>master</type>
@@ -1229,7 +1229,7 @@ vim:et:ts=4:sw=4:
                 </unix_config>
                 <app_settings>
                     <!-- batch_file_dir must be a protected, web-accessible, shared directory -->
-                    <batch_file_dir>/openils/var/web/collections</batch_file_dir>
+                    <batch_file_dir>{{ eg_install_path }}/var/web/collections</batch_file_dir>
                 </app_settings>
             </open-ils.collections>
 
@@ -1366,7 +1366,7 @@ vim:et:ts=4:sw=4:
                             be on a write-able NFS share.  -->
                         <importer>/tmp</importer>
                         <!-- permanent location for locally added content -->
-                        <jackets>/openils/var/web/opac/extras/ac</jackets>
+                        <jackets>{{ eg_install_path }}/var/web/opac/extras/ac</jackets>
                     </databases>
                 </app_settings>
             </open-ils.vandelay>

@@ -53,11 +53,11 @@
 - name: Setup .srfsh.xml for opensrf user
   become: true
   become_user: opensrf
-  copy: 
-    remote_src: true
-    src: "{{eg_install_path}}/conf/srfsh.xml.example"
-    dest: /home/opensrf/.srfsh.xml 
-    force: no
+  ansible.builtin.template: 
+    src: "evergreen/templates/srfsh.xml.j2"
+    dest: /home/opensrf/.srfsh.xml
+    owner: opensrf
+    group: opensrf
 - name: Copy ldconfig
   become: true
   copy:
