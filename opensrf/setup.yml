@@ -20,7 +20,7 @@
 #   crontab user                    => ~/.bash_profile
 - name: Check export PATH for opensrf user profile
   become: true
-  become_user: opensrf
+#  become_user: opensrf
   lineinfile: 
     dest: /home/opensrf/.bashrc
     create: yes
@@ -31,7 +31,7 @@
     line: 'export PATH="{{eg_install_path}}/bin:$PATH"'
 - name: Check LD_LIBRARY_PATH for opensrf user profile
   become: true
-  become_user: opensrf
+#  become_user: opensrf
   lineinfile: 
     dest: /home/opensrf/.bashrc
     regexp: '^export LD_LIBRARY_PATH=' 

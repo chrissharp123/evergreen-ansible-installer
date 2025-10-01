@@ -1,52 +1,7 @@
 ---
-hosts: all
-deploy_user: opensrf
-repo_base: /home/{{deploy_user}}
-os_build_target: ubuntu-jammy
-
-osrf_git_repository: git://git.evergreen-ils.org/OpenSRF.git
-eg_git_repository: git://git.evergreen-ils.org/Evergreen.git
-osrf_git_branch: main
-eg_git_branch: main
-
-websocketd_version: 0.4.1
-websocketd_package: websocketd-{{websocketd_version}}-linux_amd64.zip
-websocketd_url: https://github.com/joewalnes/websocketd/releases/download/v{{websocketd_version}}/{{websocketd_package}}
-
-perform_git_checkout: yes
-# 'no'  == build will fail on local changes
-# 'yes' == local changes will be destroyed
-force_git_checkout: no
-
-# Git clone depth.
-# Clone depth "0" means full clone. (best for development).
-# Clone depth "1" does a shallow clone, which is smaller and quicker, 
-# but does not give you the full repository history.
-osrf_clone_depth: 0
-eg_clone_depth: 0
-
-# Root directory for all OpenSRF/Evergreen install files.
-eg_install_path: /openils
-
-# XUL client server version stamp.
-# This should match the Target Server ID of the intended XUL client.
-# Note however, symlinks can be added after the fact by hand to 
-# support different XUL client versions.
-eg_stamp_id: main
-
-eg_admin_user: admin
-eg_admin_pass: demo123
-
-base_domain: localhost
-base_domain_addr: 127.0.0.1
-
-# These passwords will be inserted into the Jinja2 templates 
-# for opensrf_core.xml and redis-accounts.txt
-# They are idempotent (won't change on subsequent runs).
-opensrf_redis_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname + 'opensrf') | to_uuid }}"
-router_redis_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname + 'router') | to_uuid }}"
-gateway_redis_password:  "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname + 'gateway') | to_uuid }}"
-default_redis_password:  "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname + 'default') | to_uuid }}"
+hosts: pines_next_opensrf_servers
+eg_git_repository: git://git.evergreen-ils.org/evergreen/pines.git
+eg_git_branch: rel_3_14_3
 
 # Host domain used by web clients.
 # TODO add to apache eg.conf ServerName
